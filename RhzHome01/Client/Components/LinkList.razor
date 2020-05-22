@@ -1,0 +1,10 @@
+﻿@inherits LinkListBase
+<ul class="nav flex-column">
+    <li>@Title</li>
+    @foreach (var lnk in LinkData)
+    {
+        <li class="nav-item">
+            <a class="nav-link active" href="@lnk.Url" target="blank">@lnk.Caption</a>
+        </li>
+    }
+</ul>

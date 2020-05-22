@@ -1,0 +1,28 @@
+﻿@page "/about"
+@inherits AboutBase
+@using RhzHome01.Client.Components
+<div class="rh-masthead" id="content" role="main">
+    <div class="container">
+        @if (AboutData == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <h1>About</h1>
+           
+            <div class="row">
+                <div class="col-md-8">
+                    @((MarkupString)AboutData)
+                </div>
+                <div class="col-md-4" id="sidebar" role="navigation">
+                    <div class="card card-body bg-light">
+                        <LinkList LinkData="InterestingLinks" Title="Interesting Links"></LinkList>
+                        <LinkList LinkData="DotNetLinks" Title=".Net Links"></LinkList>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
