@@ -1,8 +1,4 @@
-﻿using Rhz.Domains.Models;
-using RhzHome01.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RhzHome01.Shared;
 using System.Threading.Tasks;
 
 namespace RhzHome01.Client.Services.Interfaces

@@ -18,11 +18,5 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Rhz.Domains">
-      <HintPath>..\_External_Lib\Rhz.Domains.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 
 </Project>

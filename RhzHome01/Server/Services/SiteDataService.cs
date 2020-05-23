@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Rhz.Domains.Models;
 using RhzHome01.Server.Services.Interfaces;
 using RhzHome01.Shared;
 using System;

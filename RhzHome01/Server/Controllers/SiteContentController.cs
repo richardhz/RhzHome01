@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Rhz.Domains.Models;
 using RhzHome01.Server.Services.Interfaces;
 using RhzHome01.Shared;
 using System;

@@ -1,5 +1,4 @@
-﻿using Rhz.Domains.Models;
-using RhzHome01.Client.Services.Interfaces;
+﻿using RhzHome01.Client.Services.Interfaces;
 using System;
 using System.Linq;
 using System.Net.Http;

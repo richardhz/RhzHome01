@@ -8,10 +8,4 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Rhz.Domains">
-      <HintPath>..\_External_Lib\Rhz.Domains.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
