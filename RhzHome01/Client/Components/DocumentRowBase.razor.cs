@@ -17,7 +17,7 @@ namespace RhzHome01.Client.Components
         [Parameter]
         public PostContentDto Document { get; set; }
 
-        protected async Task GetDocument()
+        protected void GetDocument()
         {
             //var hasItem = CacheService.Peek(Document.BlobName);
             //if (!hasItem)

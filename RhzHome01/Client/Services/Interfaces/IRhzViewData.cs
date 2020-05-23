@@ -12,7 +12,7 @@ namespace RhzHome01.Client.Services.Interfaces
         Task<IndexData> GetIndexViewModel();
         Task<AboutData> GetAboutViewModel();
         Task<DocumentListData> GetDocumentsViewModel();
-        Task<string?> GetDocument(string blobname);
+        Task<string> GetDocument(string blobname);
         Task SendMessage(ContactModel message);
     }
 }
