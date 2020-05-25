@@ -7,26 +7,27 @@ using Newtonsoft.Json;
 using RhzHome01.Shared;
 using System.Text;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
 
 namespace RhzHome01.Client.Services
 {
     public class ViewDataService : IRhzViewData
     {
         private readonly HttpClient _httpClient;
-        public ViewDataService(HttpClient client)
+        private readonly RhzSettings settings;
+
+        public ViewDataService(HttpClient client, IConfiguration Config)
         {
             _httpClient = client;
+            settings = Config.GetSection("RhzSettings").Get<RhzSettings>();
         }
 
         private async Task<T> ProcessResponse<T>(HttpResponseMessage response) where T : class
         {
-            // In all api calls we must check if the response was sucessful and act accordingly.
-
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 try
                 {
-                    
                     var data = await response.Content?.ReadAsStringAsync();
                     if (!string.IsNullOrWhiteSpace(data))
                     {
@@ -38,7 +39,6 @@ namespace RhzHome01.Client.Services
                     var e = ex.Message;
                     throw;
                 }
-                
             }
             return null;
         }
@@ -53,71 +53,58 @@ namespace RhzHome01.Client.Services
             return byteContent;
         }
 
-        private int GetCacheMaxAge(HttpResponseMessage response)
-        {
-            double seconds = 0.0;
-            if (response.Headers.CacheControl.MaxAge.HasValue)
-            {
-                seconds = response.Headers.CacheControl.MaxAge.Value.TotalSeconds;
-            }
-            return (int)seconds;
-        }
 
         public async Task<IndexData> GetIndexViewModel()
         {
-            var response = await _httpClient.GetAsync("SiteContent/IndexPage");
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}index?{settings.IndexKey}");
             var data = await ProcessResponse<BasicContentViewModel>(response);
-            
 
             return new IndexData {
-                MaxAge = GetCacheMaxAge(response),
+                MaxAge = settings.MaxCacheAge,
                 PageData = data.Content.FirstOrDefault(d => d.Key == "hero").Value,
                 SkillsData = data.Content.FirstOrDefault(d => d.Key == "skills").Value
             };
-            
         }
 
         public async Task<AboutData> GetAboutViewModel()
         {
-            var response = await _httpClient.GetAsync("SiteContent/AboutPage");
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}about?{settings.AboutKey}");
             var data = await ProcessResponse<BasicContentViewModel>(response);
 
             return new AboutData
             {
-                MaxAge = GetCacheMaxAge(response),
+                MaxAge = settings.MaxCacheAge,
                 PageData = data.Content.FirstOrDefault(d => d.Key == "about").Value,
                 InterestingLinks = data.Lists.FirstOrDefault(d => d.Key == "interestinglinks").Value,
                 DotNetLinks = data.Lists.FirstOrDefault(d => d.Key == "dotnetlinks").Value
             };
         }
 
-
-
         public async Task<DocumentListData> GetDocumentsViewModel()
         {
-            var response = await _httpClient.GetAsync("SiteContent/Documents");
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents?{settings.DocListKey}");
             var data = await ProcessResponse<BasicContentViewModel>(response);
 
             return new DocumentListData
             {
-                MaxAge = GetCacheMaxAge(response),
+                MaxAge = settings.MaxCacheAge,
                 Documents = data.Documents,
                 InterestingLinks = data.Lists.FirstOrDefault(d => d.Key == "interestinglinks").Value,
                 DotNetLinks = data.Lists.FirstOrDefault(d => d.Key == "dotnetlinks").Value
             };
         }
 
-
         public async Task<string> GetDocument(string key)
         {
-            var response = await _httpClient.GetAsync($"SiteContent/Documents/{key}");
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents/{key}?{settings.DocKey}");
             var data = await ProcessResponse<BasicContentViewModel>(response);
             return data?.Content["document"];
         }
 
         public async Task SendMessage(ContactModel message)
         {
-            var response = await _httpClient.PostAsync($"SiteContent/mail",PackageToPost(message));
+            _ = await _httpClient.PostAsync($"{settings.BaseUrl}mail?{settings.MailKey}", PackageToPost(message));
+
         }
     }
 }

@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhzHome01.Server", "RhzHome01\Server\RhzHome01.Server.csproj", "{AFCF9719-4F3E-4E3E-AE31-08045B95CFEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhzHome01.Client", "RhzHome01\Client\RhzHome01.Client.csproj", "{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhzHome01.Client", "RhzHome01\Client\RhzHome01.Client.csproj", "{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhzHome01.Shared", "RhzHome01\Shared\RhzHome01.Shared.csproj", "{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhzHome01.Shared", "RhzHome01\Shared\RhzHome01.Shared.csproj", "{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AFCF9719-4F3E-4E3E-AE31-08045B95CFEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFCF9719-4F3E-4E3E-AE31-08045B95CFEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFCF9719-4F3E-4E3E-AE31-08045B95CFEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFCF9719-4F3E-4E3E-AE31-08045B95CFEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}.Release|Any CPU.ActiveCfg = Release|Any CPU

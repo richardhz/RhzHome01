@@ -12,5 +12,6 @@ namespace RhzHome01.Shared
         public string DocListKey { get; set; }
         public string DocKey { get; set; }
         public string MailKey { get; set; }
+        public int MaxCacheAge { get; set; }
     }
 }
