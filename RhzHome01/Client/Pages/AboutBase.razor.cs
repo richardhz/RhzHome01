@@ -20,7 +20,7 @@ namespace RhzHome01.Client.Pages
             Data = CacheService.Get<AboutData>("AboutData");
             if (Data == null)
             {
-                Data = await ViewDataService.GetAboutViewModel().ConfigureAwait(false);  //looking at how ConfigureAwait false works with displays; seems to work here
+                Data = await ViewDataService.GetAboutViewModel().ConfigureAwait(false);  
                 CacheService.Add("AboutData", Data, Data.MaxAge);   
             }
 

@@ -20,8 +20,8 @@ namespace RhzHome01.Client.Pages
             Data = CacheService.Get<DocumentListData>("Documents");
             if (Data == null)
             {
-                Data = await ViewDataService.GetDocumentsViewModel();
-                CacheService.Add("Documents", Data, Data.MaxAge);   //get the maxage in seconds from server
+                Data = await ViewDataService.GetDocumentsViewModel().ConfigureAwait(false);
+                CacheService.Add("Documents", Data, Data.MaxAge);   
             }
 
             Documents = Data.Documents;

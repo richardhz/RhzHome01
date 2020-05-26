@@ -23,7 +23,7 @@ namespace RhzHome01.Client.Pages
             Data = CacheService.Get<IndexData>("IndexData");
             if (Data == null)
             {
-                Data = await ViewDataService.GetIndexViewModel();
+                Data = await ViewDataService.GetIndexViewModel().ConfigureAwait(false);
                 CacheService.Add("IndexData", Data, Data.MaxAge);
             }
 

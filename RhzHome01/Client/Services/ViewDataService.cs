@@ -43,9 +43,7 @@ namespace RhzHome01.Client.Services
             return null;
         }
 
-        
-
-        private ByteArrayContent PackageToPost<T>(T data) where T: class
+        private ByteArrayContent PackageToPost<T>(T data) where T : class
         {
             var buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
             var byteContent = new ByteArrayContent(buffer);
@@ -53,11 +51,10 @@ namespace RhzHome01.Client.Services
             return byteContent;
         }
 
-
         public async Task<IndexData> GetIndexViewModel()
         {
-            var response = await _httpClient.GetAsync($"{settings.BaseUrl}index?{settings.IndexKey}");
-            var data = await ProcessResponse<BasicContentViewModel>(response);
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}index?{settings.IndexKey}").ConfigureAwait(false);
+            var data = await ProcessResponse<BasicContentViewModel>(response).ConfigureAwait(false);
 
             return new IndexData {
                 MaxAge = settings.MaxCacheAge,
@@ -68,8 +65,8 @@ namespace RhzHome01.Client.Services
 
         public async Task<AboutData> GetAboutViewModel()
         {
-            var response = await _httpClient.GetAsync($"{settings.BaseUrl}about?{settings.AboutKey}");
-            var data = await ProcessResponse<BasicContentViewModel>(response);
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}about?{settings.AboutKey}").ConfigureAwait(false);
+            var data = await ProcessResponse<BasicContentViewModel>(response).ConfigureAwait(false);
 
             return new AboutData
             {
@@ -82,8 +79,8 @@ namespace RhzHome01.Client.Services
 
         public async Task<DocumentListData> GetDocumentsViewModel()
         {
-            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents?{settings.DocListKey}");
-            var data = await ProcessResponse<BasicContentViewModel>(response);
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents?{settings.DocListKey}").ConfigureAwait(false);
+            var data = await ProcessResponse<BasicContentViewModel>(response).ConfigureAwait(false);
 
             return new DocumentListData
             {
@@ -96,14 +93,14 @@ namespace RhzHome01.Client.Services
 
         public async Task<string> GetDocument(string key)
         {
-            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents/{key}?{settings.DocKey}");
-            var data = await ProcessResponse<BasicContentViewModel>(response);
+            var response = await _httpClient.GetAsync($"{settings.BaseUrl}documents/{key}?{settings.DocKey}").ConfigureAwait(false);
+            var data = await ProcessResponse<BasicContentViewModel>(response).ConfigureAwait(false);
             return data?.Content["document"];
         }
 
         public async Task SendMessage(ContactModel message)
         {
-            _ = await _httpClient.PostAsync($"{settings.BaseUrl}mail?{settings.MailKey}", PackageToPost(message));
+            _ = await _httpClient.PostAsync($"{settings.BaseUrl}mail?{settings.MailKey}", PackageToPost(message)).ConfigureAwait(false);
 
         }
     }
