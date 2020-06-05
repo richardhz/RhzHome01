@@ -5,7 +5,21 @@
 </div>
 
 <div class="main">
-    <div class="content px-4">
-        @Body
+    <div class="top-row px-4">
+        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <span class="oi oi-home" aria-hidden="true"></span> Home
+        </NavLink>
+        <NavLink class="nav-link" href="about">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> About
+        </NavLink>
+        <NavLink class="nav-link" href="documents">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Document List
+        </NavLink>
+        <NavLink class="nav-link" href="Contact">
+            <span class="oi oi-pencil" aria-hidden="true"></span> Contact
+        </NavLink>
     </div>
-</div>
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>

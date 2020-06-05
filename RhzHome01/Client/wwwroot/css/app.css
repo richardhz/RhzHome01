@@ -160,6 +160,7 @@ app {
         height: 100vh;
         position: sticky;
         top: 0;
+        display:none;
     }
 
     .main .top-row {
