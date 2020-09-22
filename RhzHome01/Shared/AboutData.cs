@@ -7,5 +7,6 @@ namespace RhzHome01.Shared
         public string PageData { get; set; }
         public IEnumerable<LinkContentDto> InterestingLinks { get; set; }
         public IEnumerable<LinkContentDto> DotNetLinks { get; set; }
+        public string ContactStatus { get; set; }
     }
 }

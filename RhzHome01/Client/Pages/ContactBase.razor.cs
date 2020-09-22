@@ -15,6 +15,8 @@ namespace RhzHome01.Client.Pages
         protected string Message { get; set; }
         protected bool Sent { get; set; }
         protected string StatusClass { get; set; }
+        protected bool ButtonIsDisabled { get; set; }
+        protected string StatusMessage { get; set; }
         protected IEnumerable<LinkContentDto> InterestingLinks { get; set; }
         protected IEnumerable<LinkContentDto> DotNetLinks { get; set; }
 
@@ -31,6 +33,8 @@ namespace RhzHome01.Client.Pages
             
             InterestingLinks = Data.InterestingLinks;
             DotNetLinks = Data.DotNetLinks;
+            StatusMessage = Data.ContactStatus;
+            ButtonIsDisabled = Data.ContactStatus != null;
         }
 
         protected async Task HandleValidSubmit()

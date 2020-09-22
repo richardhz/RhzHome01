@@ -13,8 +13,8 @@ namespace RhzHome01.Shared
             Documents = new List<PostContentDto>();
         }
         public string RequestPath { get; set; }
-        public Dictionary<string, string> Content { get; }
-        public Dictionary<string, IEnumerable<LinkContentDto>> Lists { get; }
+        public Dictionary<string, string> Content { get; set; }
+        public Dictionary<string, IEnumerable<LinkContentDto>> Lists { get; set; }
         public IEnumerable<PostContentDto> Documents { get; set; }
 
     }
