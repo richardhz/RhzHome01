@@ -15,11 +15,7 @@
     <ProjectReference Include="..\Shared\RhzHome01.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  
 
   <ItemGroup>
     <Content Update="wwwroot\appsettings.Development.json">
