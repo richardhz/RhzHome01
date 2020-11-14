@@ -4,9 +4,9 @@ using System.Text;
 
 namespace RhzHome01.Shared
 {
-    public class IndexData : ContentBase
+    public record IndexData : ContentBase
     {
-        public string PageData { get; set; }
-        public string SkillsData { get; set; }
+        public string PageData { get; init; }
+        public string SkillsData { get; init; }
     }
 }

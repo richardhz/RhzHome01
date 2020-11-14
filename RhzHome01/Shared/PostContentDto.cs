@@ -2,15 +2,15 @@
 
 namespace RhzHome01.Shared
 {
-    public class PostContentDto
+    public record PostContentDto
     {
         //public string Key { get; set; }
-        public string Caption { get; set; }
-        public string Preview { get; set; }
-        public string Content { get; set; }
-        public DateTime PublishedOn { get; set; }
-        public DateTime UpdatedOn { get; set; }
-        public bool Published { get; set; }
-        public string BlobName { get; set; }
+        public string Caption { get; init; }
+        public string Preview { get; init; }
+        public string Content { get; init; }
+        public DateTime PublishedOn { get; init; }
+        public DateTime UpdatedOn { get; init; }
+        public bool Published { get; init; }
+        public string BlobName { get; init; }
     }
 }

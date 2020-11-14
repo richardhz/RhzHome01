@@ -2,8 +2,8 @@
 
 namespace RhzHome01.Shared
 {
-    public class DocumentListData : ContentBaseWithLinks
+    public record DocumentListData : ContentBaseWithLinks
     {
-        public IEnumerable<PostContentDto> Documents { get; set; }
+        public IEnumerable<PostContentDto> Documents { get; init; }
     }
 }

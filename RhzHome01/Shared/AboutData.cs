@@ -2,9 +2,9 @@
 
 namespace RhzHome01.Shared
 {
-    public class AboutData : ContentBaseWithLinks
+    public record AboutData : ContentBaseWithLinks
     {
-        public string PageData { get; set; }
-        public string ContactStatus { get; set; }
+        public string PageData { get; init; }
+        public string ContactStatus { get; init; }
     }
 }
