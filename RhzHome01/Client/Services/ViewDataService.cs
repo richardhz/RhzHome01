@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using RhzHome01.Shared;
 using System.Text;
 using System.Net.Http.Headers;
@@ -22,7 +21,7 @@ namespace RhzHome01.Client.Services
         private readonly IHttpClientFactory _clientFactory;
         private readonly RhzSettings settings;
 
-        JsonSerializerOptions jso = new JsonSerializerOptions
+        private readonly JsonSerializerOptions jso = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
@@ -34,14 +33,6 @@ namespace RhzHome01.Client.Services
             settings = Config.GetSection("RhzSettings").Get<RhzSettings>();
         }
 
-
-        private ByteArrayContent PackageToPost<T>(T data) where T : class
-        {
-            var buffer = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            return byteContent;
-        }
 
         public async Task<IndexData> GetIndexViewModel()
         {
@@ -95,8 +86,7 @@ namespace RhzHome01.Client.Services
         public async Task SendMessage(ContactModel message)
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            //_ = await _httpClient.PostAsync($"{settings.BaseUrl}mail?{settings.MailKey}", PackageToPost(message)).ConfigureAwait(false);
-            _ = await client.PostAsync($"{client.BaseAddress}mail?{settings.MailKey}", PackageToPost(message)).ConfigureAwait(false);
+            _ = await client.PostAsJsonAsync<ContactModel>($"mail?{settings.MailKey}", message, jso).ConfigureAwait(false);
 
         }
     }

@@ -1,7 +1,7 @@
 ﻿namespace RhzHome01.Shared
 {
-    public class ContentBase
+    public record ContentBase
     {
-        public int MaxAge { get; set; }
+        public int MaxAge { get; init; }
     }
 }
