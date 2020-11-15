@@ -183,6 +183,11 @@ app {
     }
 }
 /* R.Hernandez styles */
+.rh-footer {
+    color: chocolate;
+    text-align: center;
+}
+
 .rhz-button {
     font: bolder;
     cursor: pointer;

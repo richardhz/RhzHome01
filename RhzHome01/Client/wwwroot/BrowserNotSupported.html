@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Rhz Home</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="RhzHome05.styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="rh-masthead" id="content" role="main">
+        <div class="container">
+            <h1>Richard Hernandez</h1>
+            <p class="lead">
+            <p>Software Developer | Architect | Technologist</p>
+            <p>A pragmatic Developer with a SOLID approach to development.</p>
+            <p>Excellent track record for both solo projects and team working, including mentoring and team leading.</p>
+
+            <br>
+            <p><a href="https://app.pluralsight.com/profile/richardhz/" target="_blank">View my Pluralsight profile. </a></p>
+
+            <br><br>
+            <p class="alert-danger">
+                This is a Blazor WebAssembly project which is not supported in older browsers  <span id="bid"></span>.
+            </p>
+        </div>
+    </div>
+    <script>
+        (function myFunction() {
+            var x = "This browser is not supported: " + navigator.product;
+            document.getElementById("bid").innerHTML = x;
+        })()
+    </script>
+</body>
+</html>
