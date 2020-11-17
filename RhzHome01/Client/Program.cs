@@ -18,10 +18,11 @@ namespace RhzHome01.Client
 
             builder.Services.AddHttpClient("ServerlessApi",
                 cli => {
-                    cli.BaseAddress = new Uri(builder.Configuration.GetSection("RhzSettings").Get<RhzSettings>().BaseUrl);
+                    var settings = builder.Configuration.GetSection("RhzSettings").Get<RhzSettings>();
+                    cli.BaseAddress = new Uri(settings.BaseUrl);
+                    cli.DefaultRequestHeaders.Add(settings.Key, settings.Value);
                 });
             
-            //builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration.GetSection("RhzSettings").Get<RhzSettings>().BaseUrl) });
             builder.Services.AddSingleton<ICacheService, CacheService>();
             builder.Services.AddTransient<IRhzViewData, ViewDataService>();
             var host = builder.Build();

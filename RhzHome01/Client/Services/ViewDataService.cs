@@ -17,9 +17,9 @@ namespace RhzHome01.Client.Services
 {
     public class ViewDataService : IRhzViewData
     {
-        //private readonly HttpClient _httpClient;
         private readonly IHttpClientFactory _clientFactory;
-        private readonly RhzSettings settings;
+        private readonly int _cacheAge;
+        private const int _defaultCacheAge = 60;
 
         private readonly JsonSerializerOptions jso = new JsonSerializerOptions
         {
@@ -28,19 +28,19 @@ namespace RhzHome01.Client.Services
 
         public ViewDataService(IHttpClientFactory factory, IConfiguration Config)
         {
-            //_httpClient = client;
             _clientFactory = factory;
-            settings = Config.GetSection("RhzSettings").Get<RhzSettings>();
+            _cacheAge = Config.GetSection("RhzSettings").Get<RhzSettings>().MaxCacheAge;
+            _cacheAge = (_cacheAge <= 0) ? _defaultCacheAge : _cacheAge;
         }
 
 
         public async Task<IndexData> GetIndexViewModel()
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"index?{ settings.IndexKey}",jso).ConfigureAwait(false);
+            var data = await client.GetFromJsonAsync<BasicContentViewModel>("index",jso).ConfigureAwait(false);
 
             return new IndexData {
-                MaxAge = settings.MaxCacheAge,
+                MaxAge = _cacheAge,
                 PageData = data.Content.FirstOrDefault(d => d.Key == "hero").Value,
                 SkillsData = data.Content.FirstOrDefault(d => d.Key == "skills").Value
             };
@@ -49,11 +49,11 @@ namespace RhzHome01.Client.Services
         public async Task<AboutData> GetAboutViewModel()
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"about?{ settings.AboutKey}",jso).ConfigureAwait(false);
+            var data = await client.GetFromJsonAsync<BasicContentViewModel>("about",jso).ConfigureAwait(false);
 
             return new AboutData
             {
-                MaxAge = settings.MaxCacheAge,
+                MaxAge = _cacheAge,
                 PageData = data.Content.FirstOrDefault(d => d.Key == "about").Value,
                 InterestingLinks = data.Lists.FirstOrDefault(d => d.Key == "interestinglinks").Value,
                 DotNetLinks = data.Lists.FirstOrDefault(d => d.Key == "dotnetlinks").Value,
@@ -65,11 +65,11 @@ namespace RhzHome01.Client.Services
         public async Task<DocumentListData> GetDocumentsViewModel()
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"documents?{ settings.DocListKey}",jso).ConfigureAwait(false);
+            var data = await client.GetFromJsonAsync<BasicContentViewModel>("documents",jso).ConfigureAwait(false);
 
             return new DocumentListData
             {
-                MaxAge = settings.MaxCacheAge,
+                MaxAge = _cacheAge,
                 Documents = data.Documents,
                 InterestingLinks = data.Lists.FirstOrDefault(d => d.Key == "interestinglinks").Value,
                 DotNetLinks = data.Lists.FirstOrDefault(d => d.Key == "dotnetlinks").Value
@@ -79,14 +79,14 @@ namespace RhzHome01.Client.Services
         public async Task<string> GetDocument(string key)
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"documents/{key}?{ settings.DocKey}",jso).ConfigureAwait(false);
+            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"documents/{key}",jso).ConfigureAwait(false);
             return data?.Content["document"];
         }
 
         public async Task SendMessage(ContactModel message)
         {
             var client = _clientFactory.CreateClient("ServerlessApi");
-            _ = await client.PostAsJsonAsync<ContactModel>($"mail?{settings.MailKey}", message, jso).ConfigureAwait(false);
+            _ = await client.PostAsJsonAsync<ContactModel>("mail", message, jso).ConfigureAwait(false);
 
         }
     }
