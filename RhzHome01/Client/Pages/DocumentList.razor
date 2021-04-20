@@ -5,7 +5,9 @@
     <div class="container">
         @if (Documents == null)
         {
-            <p><em>Loading...</em></p>
+        <div class="rh-spinner">
+            <MatProgressCircle Indeterminate="true" Size="MatProgressCircleSize.Medium" />
+        </div>
         }
         else
         {

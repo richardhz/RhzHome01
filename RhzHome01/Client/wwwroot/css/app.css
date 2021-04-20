@@ -183,9 +183,25 @@ app {
     }
 }
 /* R.Hernandez styles */
+
+.rh-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+}
+
 .rh-footer {
     color: chocolate;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
 }
 
 .rhz-button {
@@ -200,8 +216,8 @@ app {
     }
 
 .rh-masthead {
-    position: relative;
-    padding: 30px 15px;
+    /*position: relative;
+    padding: 30px 15px;*/
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
@@ -241,8 +257,8 @@ app {
     }
 
     .rh-masthead {
-        position: relative;
-        padding: 30px 15px;
+        /*position: relative;
+        padding: 30px 15px;*/
         text-align: center;
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
     }

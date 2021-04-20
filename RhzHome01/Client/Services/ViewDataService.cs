@@ -36,8 +36,7 @@ namespace RhzHome01.Client.Services
 
         public async Task<IndexData> GetIndexViewModel()
         {
-            var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>("index",jso).ConfigureAwait(false);
+            var data = await GetJsonData("index");
 
             return new IndexData {
                 MaxAge = _cacheAge,
@@ -48,8 +47,7 @@ namespace RhzHome01.Client.Services
 
         public async Task<AboutData> GetAboutViewModel()
         {
-            var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>("about",jso).ConfigureAwait(false);
+            var data = await GetJsonData("about");
 
             return new AboutData
             {
@@ -64,8 +62,7 @@ namespace RhzHome01.Client.Services
 
         public async Task<DocumentListData> GetDocumentsViewModel()
         {
-            var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>("documents",jso).ConfigureAwait(false);
+            var data = await GetJsonData("documents");
 
             return new DocumentListData
             {
@@ -78,8 +75,8 @@ namespace RhzHome01.Client.Services
 
         public async Task<string> GetDocument(string key)
         {
-            var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>($"documents/{key}",jso).ConfigureAwait(false);
+            var data = await GetJsonData($"documents/{key}");
+
             return data?.Content["document"];
         }
 
@@ -88,6 +85,14 @@ namespace RhzHome01.Client.Services
             var client = _clientFactory.CreateClient("ServerlessApi");
             _ = await client.PostAsJsonAsync<ContactModel>("mail", message, jso).ConfigureAwait(false);
 
+        }
+
+
+        private async Task<BasicContentViewModel> GetJsonData(string endpoint)
+        {
+            var client = _clientFactory.CreateClient("ServerlessApi");
+            var data = await client.GetFromJsonAsync<BasicContentViewModel>(endpoint, jso).ConfigureAwait(false);
+            return data;
         }
     }
 }

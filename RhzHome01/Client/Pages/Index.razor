@@ -4,8 +4,10 @@
 @if (HeroData == null)
 {
     <div class="rh-masthead" id="content" role="main">
-        <div class="container">
-            <p><h3>@LoadingMessage</h3></p>
+        <div class="rh-spinner">
+            <div>
+                <MatProgressCircle Indeterminate="true" Size="MatProgressCircleSize.Medium" />
+            </div>
         </div>
     </div>
 }

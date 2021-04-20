@@ -25,6 +25,7 @@ namespace RhzHome01.Client.Pages
             {
                 Data = await ViewDataService.GetIndexViewModel().ConfigureAwait(false);
                 CacheService.Add("IndexData", Data, Data.MaxAge);
+                LoadingMessage = "Loading";
             }
 
             HeroData = Data.PageData;
