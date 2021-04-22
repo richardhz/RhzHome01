@@ -77,6 +77,11 @@ namespace RhzHome01.Client.Services
         {
             var data = await GetJsonData($"documents/{key}");
 
+            if (data is null || data.RequestPath.Contains("ERROR"))
+            {
+                return null;
+            }
+
             return data?.Content["document"];
         }
 
@@ -90,8 +95,35 @@ namespace RhzHome01.Client.Services
 
         private async Task<BasicContentViewModel> GetJsonData(string endpoint)
         {
+            BasicContentViewModel data = null;
             var client = _clientFactory.CreateClient("ServerlessApi");
-            var data = await client.GetFromJsonAsync<BasicContentViewModel>(endpoint, jso).ConfigureAwait(false);
+            try
+            {
+                data = await client.GetFromJsonAsync<BasicContentViewModel>(endpoint, jso).ConfigureAwait(false);
+            }
+            catch (HttpRequestException ex)
+            {
+                if(data is not null)
+                {
+                    data.RequestPath = ex.StatusCode.ToString() + " ERROR" ; 
+                }
+                
+            }
+            catch (NotSupportedException ex)
+            {
+                if (data is not null)
+                {
+                    data.RequestPath = ex.Message + " ERROR";
+                }
+            }
+
+            catch (JsonException ex)
+            {
+                if (data is not null)
+                {
+                    data.RequestPath = ex.Message + " ERROR";
+                }
+            }
             return data;
         }
     }
