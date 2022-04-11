@@ -6,7 +6,6 @@ using RhzHome01.Client.Services.Interfaces;
 using RhzHome01.Client.Services;
 using RhzHome01.Shared;
 using Microsoft.Extensions.Configuration;
-using MatBlazor;
 
 namespace RhzHome01.Client
 {
@@ -16,7 +15,6 @@ namespace RhzHome01.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
-            builder.Services.AddMatBlazor();
             builder.Services.AddHttpClient("ServerlessApi",
                 cli => {
                     var settings = builder.Configuration.GetSection("RhzSettings").Get<RhzSettings>();

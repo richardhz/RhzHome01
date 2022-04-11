@@ -6,7 +6,7 @@
         @if (Documents == null)
         {
         <div class="rh-spinner">
-            <MatProgressCircle Indeterminate="true" Size="MatProgressCircleSize.Medium" />
+            Loading ...
         </div>
         }
         else
@@ -16,10 +16,24 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    @foreach (var doc in Documents)
-                    {
-                        <DocumentRow Document="doc"></DocumentRow>
-                    }
+                    <SbrDisplayInfoList Items=@Documents Context="doc">
+                        <div class="row">
+                            <a @onclick="@(() => GotoPage(doc.BlobName))"> <h3 class="rhz-button">@doc.Caption</h3></a>
+                        </div>
+                        <div class="row ms-1">@doc.Preview</div>
+                        <div class="row">
+                            <span> 
+                                <div  style="display:inline-block" class="oi oi-clock"  aria-hidden="true"></div>
+                                @doc.PublishedOn.ToLongDateString()
+                            </span> 
+                        </div>
+                        <div class="row">
+                             <span>
+                                <div style="display:inline-block" class="oi oi-bell" aria-hidden="true"></div>
+                                Updated on @doc.UpdatedOn.ToLongDateString()
+                             </span>
+                        </div>
+                    </SbrDisplayInfoList>
                 </div>
                 <div class="col-md-4 rh-sidebar" role="navigation">
                     <div class="card card-body bg-light">

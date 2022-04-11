@@ -9,6 +9,8 @@ namespace RhzHome01.Client.Pages
     public class DocumentListBase : ComponentBase
     {
         [Inject]
+        NavigationManager NavManager { get; set; }
+        [Inject]
         protected IRhzViewData ViewDataService { get; set; }
         [Inject] ICacheService CacheService { get; set; }
         protected IEnumerable<PostContentDto> Documents { get; set; }
@@ -27,6 +29,11 @@ namespace RhzHome01.Client.Pages
             Documents = Data.Documents;
             InterestingLinks = Data.InterestingLinks;
             DotNetLinks = Data.DotNetLinks;
+        }
+
+        protected void GotoPage(string name)
+        {
+           NavManager.NavigateTo($"/documents/{name}");
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhzHome01.Client", "RhzHome01\Client\RhzHome01.Client.csproj", "{A1F03BC4-56FA-4E01-8D6F-0C78CF45360A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhzHome01.Shared", "RhzHome01\Shared\RhzHome01.Shared.csproj", "{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaibaData.Blazor.Components", "..\..\..\research\repos\SaibaData.Blazor.Components\SaibaData.Blazor.Components\SaibaData.Blazor.Components.csproj", "{F9D63C3F-6960-41D5-ABC9-E400CA5286DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1AFF964-7C81-43E4-A46A-9ABABEB1FA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D63C3F-6960-41D5-ABC9-E400CA5286DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D63C3F-6960-41D5-ABC9-E400CA5286DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D63C3F-6960-41D5-ABC9-E400CA5286DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D63C3F-6960-41D5-ABC9-E400CA5286DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
