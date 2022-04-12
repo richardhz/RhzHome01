@@ -236,7 +236,7 @@ app {
     .rh-masthead h1 {
         font-size: 50px;
         line-height: 1;
-        color: chocolate;
+        color: var(--palette-brand-primary); /*chocolate;*/
     }
 
     .rh-masthead .btn-outline-light {
