@@ -1,5 +1,4 @@
 ﻿@page "/documents"
-@inherits DocumentListBase
 @using RhzHome01.Client.Components
 <div class="rh-masthead" id="content" role="main">
     <div class="container">
@@ -23,13 +22,13 @@
                         <div class="row ms-1">@doc.Preview</div>
                         <div class="row">
                             <span> 
-                                <div  style="display:inline-block" class="oi oi-clock"  aria-hidden="true"></div>
+                                <div  style="display:inline-block" aria-hidden="true"><i class="fa fa-clock"></i></div>
                                 @doc.PublishedOn.ToLongDateString()
                             </span> 
                         </div>
                         <div class="row">
                              <span>
-                                <div style="display:inline-block" class="oi oi-bell" aria-hidden="true"></div>
+                                <div style="display:inline-block" aria-hidden="true"><i class="fa fa-calendar-plus"></i></div>
                                 Updated on @doc.UpdatedOn.ToLongDateString()
                              </span>
                         </div>
