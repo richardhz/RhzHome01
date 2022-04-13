@@ -1,5 +1,5 @@
 ﻿@page "/contact"
-@inherits ContactBase
+@implements IDisposable
 @using RhzHome01.Client.Components
 <div class="rh-masthead">
     <div class="container">
@@ -13,30 +13,29 @@
                 {
                 <EditForm Model="ContactData" OnValidSubmit="@HandleValidSubmit">
                     <DataAnnotationsValidator />
-                    <ValidationSummary />
+                    
                     @if (@ButtonIsDisabled)
                     {
                         <div class="form-group row alert alert-danger">@StatusMessage</div>
                     }
-                    <div class="form-group row">
-                        @*<label for="name" class="col-sm-2">Name</label>*@
+                    <div class="form-group form-row mb-3">
                         <InputText class="form-control col-sm-8" id="name" name="Name" @bind-Value=ContactData.Name placeholder="Name" />
-
+                        <ValidationMessage For="@(() => ContactData.Name)"/>
                     </div>
 
-                    <div class="form-group row">
-                        @*<label for="email" class="col-sm-2">Email</label>*@
+                    <div class="form-group form-row mb-3">
                         <InputText class="form-control col-sm-8" id="email" name="Email" @bind-Value=ContactData.Email placeholder="Email" data-val="true" data-val-required="*" />
+                        <ValidationMessage For="@(() => ContactData.Email)"/>
                     </div>
 
-                    <div class="form-group row">
-                        @*<label for="subject" class="col-sm-2">Subject</label>*@
+                    <div class="form-group form-row mb-3">
                         <InputText class="form-control col-sm-8" id="subject" name="subject" @bind-Value=ContactData.Subject placeholder="Subject" data-val="true" data-val-required="*" />
+                        <ValidationMessage For="@(() => ContactData.Subject)"/>
                     </div>
 
-                    <div class="form-group row">
-                        @*<label for="comment" class="col-sm-2">Comment</label>*@
+                    <div class="form-group form-row mb-3">
                         <InputTextArea rows="4" class="form-control col-sm-8" id="comment" name="Comment" @bind-Value=ContactData.Comment placeholder="Comment" data-val="true" data-val-required="*" />
+                        <ValidationMessage For="@(() => ContactData.Comment)"/>
                     </div>
 
                     <button type="submit" disabled="@ButtonIsDisabled" class="btn btn-primary">Send</button>

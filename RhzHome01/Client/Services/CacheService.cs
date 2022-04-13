@@ -55,5 +55,14 @@ namespace RhzHome01.Client.Services
             }
             return false;
         }
+
+        public void Remove(string key)
+        {
+            if (Peek(key))
+            {
+                List.Remove(key);
+            }
+        }
+
     }
 }
