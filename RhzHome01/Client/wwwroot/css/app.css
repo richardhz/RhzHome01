@@ -31,10 +31,14 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
+        background-color: var(--palette-brand-secondary);
+        color: var(--palette-brand-primary);
         border-bottom: 1px solid #d6d5d5;
         justify-content: flex-end;
     }
+        .main .top-row .nav-link {
+            color: var(--palette-brand-primary);
+        } 
 
         .main .top-row > a, .main .top-row .btn-link {
             white-space: nowrap;
@@ -223,7 +227,7 @@ app {
 
 
     .rhz-button:hover {
-        color: dodgerblue;
+        color: var(--palette-brand-secondary);
     }
 
 .rh-masthead {
@@ -237,6 +241,14 @@ app {
         font-size: 50px;
         line-height: 1;
         color: var(--palette-brand-primary); /*chocolate;*/
+    }
+
+    .rh-masthead .container p a {
+        color: var(--palette-brand-primary);
+    }
+
+    .rh-masthead .card span i {
+        color: var(--palette-brand-primary);
     }
 
     .rh-masthead .btn-outline-light {
