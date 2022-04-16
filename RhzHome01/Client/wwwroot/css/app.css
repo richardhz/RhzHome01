@@ -251,6 +251,10 @@ app {
         color: var(--palette-brand-primary);
     }
 
+    .rh-masthead .rh-spinner > i {
+        color: var(--palette-brand-primary);
+    }
+
     .rh-masthead .btn-outline-light {
         margin-top: 20px;
         margin-bottom: 20px;
