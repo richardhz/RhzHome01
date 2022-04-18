@@ -2,17 +2,24 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--palette-brand-background);
+    color: var(--palette-brand-primary);
 }
 
-a, .btn-link {
-    color: #0366d6;
-}
+/*a, .btn-link {
+    color: var(--palette-brand-primary);*/ /*#0366d6;*/
+/*}*/
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--palette-brand-primary); /*#1b6ec2*/
+    border-color: var(--palette-brand-primary); /*#1861ac;*/
 }
+
+    .btn-primary:hover {
+        background-color: var(--palette-brand-secondary);
+        border-color: var(--palette-brand-primary);
+    }
 
 app {
     position: relative;
@@ -219,6 +226,28 @@ app {
     height: 60px;
 }
 
+div .rh-modal.modal-header {
+    background-color: var(--palette-brand-secondary);
+    color: var(--palette-brand-primary);
+}
+
+    div .rh-modal.modal-header > .btn-close {
+        color: var(--palette-brand-primary);
+    }
+
+div .rh-modal.modal-footer {
+    background-color: var(--palette-brand-secondary);
+    color: var(--palette-brand-primary);
+}
+
+    div .rh-modal.modal-footer > .btn {
+        color: var(--palette-brand-primary);
+    }
+
+div .rh-modal.modal-body {
+    background-color: var(--palette-brand-background);
+}
+
 .rhz-button {
     font: bolder;
     cursor: pointer;
@@ -231,8 +260,6 @@ app {
     }
 
 .rh-masthead {
-    /*position: relative;
-    padding: 30px 15px;*/
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
@@ -242,6 +269,7 @@ app {
         line-height: 1;
         color: var(--palette-brand-primary); /*chocolate;*/
     }
+
 
     .rh-masthead .container p a {
         color: var(--palette-brand-primary);
@@ -262,7 +290,7 @@ app {
         font-size: 24px;
     }
 /* Links to project-level content like the repo, Expo, etc */
-.rh-masthead-links {
+/*.rh-masthead-links {
     margin-bottom: 20px;
     padding-left: 0;
     list-style: none;
@@ -276,7 +304,7 @@ app {
 
     .rh-masthead-links a {
         color: #fff;
-    }
+    }*/
 
 @media (max-width: 1024px) and (orientation:portrait) {
     .rh-sidebar {

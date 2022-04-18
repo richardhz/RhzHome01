@@ -1,24 +1,22 @@
-﻿@inherits SkillsDialogBase
+﻿
 
 @if (ShowDialog)
 {
 <div class="modal fade show d-block" id="skillsModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog rh-style-modal" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header rh-modal">
                 <h5 class="modal-title" id="titleLabel">Skills Summary</h5>
-                <button type="button" class="close" data_dismiss="modal" @onclick="Close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" @onclick="Close" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body rh-modal">
                 <p>
                     @((MarkupString)SkillsData)
                 </p>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal"  @onclick="Close">Close</button>
+            <div class="modal-footer rh-modal">
+                <button type="button" class="btn " data-dismiss="modal"  @onclick="Close">Close</button>
                 
             </div>
         </div>

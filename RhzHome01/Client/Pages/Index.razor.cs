@@ -12,7 +12,7 @@ public partial class Index
     protected string MainTitle { get; set; }
     protected string HeroData { get; set; }
     protected string SkillsData { get; set; }
-    protected SkillsDialogBase SkillsDialog { get; set; }
+    protected SkillsDialog SkillsDialog { get; set; }
     private IndexData Data { get; set; }
     protected string LoadingMessage { get; set; } = "Connecting to Azure functions...";
 

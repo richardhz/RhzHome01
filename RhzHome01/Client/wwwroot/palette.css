@@ -1,5 +1,6 @@
 ﻿:root {
     --palette-brand-primary: #be560c;
     --palette-brand-secondary: #f0c5a3;
-   
+    --palette-brand-background: #f3eae2; /* antiquewhite*/
+    --palette-info-background: #f0c5a3;
 }
